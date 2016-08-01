@@ -23,6 +23,17 @@ body {
   height: 60vh;
   top: 20vh;
   left: 20vw; }
+  .confirmation h3 {
+    text-align: center; }
+  .confirmation .buttonbox {
+    width: 50%;
+    margin: 30px auto; }
+    .confirmation .buttonbox input {
+      display: inline-block;
+      font-size: 20px;
+      width: 25%;
+      height: 80px;
+      margin: 12.5%; }
 
 #overlay {
   position: fixed;
