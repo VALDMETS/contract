@@ -37,11 +37,18 @@ const Reader = React.createClass({
       title: store.contract.get('title'),
       body: store.contract.get('body')
     });
+    store.contract.on('update', () => {
+      this.setState({
+        read: store.contract.get('read')
+      });
+    });
   },
   clickHandler: function() {
-    store.contract.set({read: "true"});
-    this.setState({read: store.contract.get('read')});
-    hashHistory.push('/main/confirm');
+    if (!this.state.read) {
+      store.contract.set({read: "true"});
+      this.setState({read: store.contract.get('read')});
+      hashHistory.push('/main/confirm');
+    }
   }
 });
 export default Reader;
