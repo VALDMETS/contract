@@ -7,14 +7,18 @@ const Reader = React.createClass({
   getInitialState: function() {
     return {
       title: '',
-      body: ''
+      body: [],
+      read: ''
     }
   },
   render: function() {
+    let bodyArray = this.state.body.map(function(par, i){
+      return <p key={i}>{par}</p>
+    });
     let contractContent = (
       <div className="contract">
         <h4>{this.state.title}</h4>
-        <p>{this.state.body}</p>
+        {bodyArray}
       </div>
     );
     return (
@@ -22,7 +26,7 @@ const Reader = React.createClass({
         {contractContent}
         <form>
           Mark as read
-          <input type="checkbox" onClick={this.clickHandler}/>
+          <input id="checker" type="checkbox" onClick={this.clickHandler} checked={this.state.read}/>
         </form>
         {this.props.children}
       </div>
@@ -35,7 +39,8 @@ const Reader = React.createClass({
     });
   },
   clickHandler: function() {
-    console.log('wow wee');
+    store.contract.set({read: "true"});
+    this.setState({read: store.contract.get('read')});
     hashHistory.push('/main/confirm');
   }
 });

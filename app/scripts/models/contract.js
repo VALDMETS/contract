@@ -4,7 +4,8 @@ import Bb from 'backbone';
 const Contract = Bb.Model.extend({
   defaults: {
     title: '',
-    body: ''
+    body: [],
+    read: ''
   }
 });
 
